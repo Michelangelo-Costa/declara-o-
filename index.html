@@ -5,32 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Amor da Minha Vida</title>
     <style>
-        .footer {
-            font-size: 14px;
-            color: #777;
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
         .container {
             text-align: center;
-            font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             max-width: 600px;
-            margin: 20px auto;
+            width: 90%;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            color: #d81b60;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            animation: slideIn 1.5s ease-in-out;
         }
         img {
             width: 80%;
             max-width: 400px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            margin-top: 15px;
-        }
-        h1 {
-            color: #d81b60;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            animation: zoomIn 1.5s ease-in-out;
         }
         .heart {
-            font-size: 24px;
+            font-size: 2em;
+            color: #ff6b6b;
+            animation: beat 1.5s infinite;
+        }
+        .footer {
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .floating-hearts span {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 1.5em;
+            animation: float 5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        .marry-button {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease;
+            margin-top: 20px;
+        }
+        .marry-button:hover {
+            background-color: #ff4757;
+        }
+        .marry-button.runaway {
+            animation: runaway 0.5s ease;
+        }
+        @keyframes runaway {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(50px, -50px); }
+            50% { transform: translate(-50px, 50px); }
+            75% { transform: translate(50px, 50px); }
+            100% { transform: translate(-50px, -50px); }
+        }
+        /* Efeito de estrelas */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            animation: twinkle 3s infinite;
+        }
+        .stars span {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+            opacity: 0;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
     </style>
 </head>
@@ -45,8 +155,56 @@
         <!-- Adicionando a imagem -->
         <img src="amor.jpeg" alt="Uma lembrança especial">
 
+        <!-- Botão "Quer casar comigo?" -->
+        <button class="marry-button" id="marryButton">Quer casar comigo? 💍</button>
+
         <div class="heart">❤️</div>
         <p class="footer">&copy; 2025 - Feito com amor 💖</p>
+
+        <!-- Efeito de corações flutuantes -->
+        <div class="floating-hearts">
+            <span>❤️</span>
+            <span>💖</span>
+            <span>💕</span>
+            <span>💗</span>
+            <span>💓</span>
+        </div>
     </div>
+
+    <!-- Efeito de estrelas -->
+    <div class="stars">
+        <span style="top: 10%; left: 10%; width: 5px; height: 5px; animation-duration: 2s;"></span>
+        <span style="top: 30%; left: 20%; width: 7px; height: 7px; animation-duration: 2.5s;"></span>
+        <span style="top: 50%; left: 40%; width: 6px; height: 6px; animation-duration: 1.5s;"></span>
+        <span style="top: 70%; left: 60%; width: 8px; height: 8px; animation-duration: 3s;"></span>
+        <span style="top: 90%; left: 80%; width: 4px; height: 4px; animation-duration: 2s;"></span>
+    </div>
+
+    <script>
+        // Adiciona corações flutuantes dinamicamente
+        const floatingHearts = document.querySelector('.floating-hearts');
+        const hearts = ['❤️', '💖', '💕', '💗', '💓'];
+
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement('span');
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = `${Math.random() * 100}%`;
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            floatingHearts.appendChild(heart);
+        }
+
+        // Botão que foge ao tentar clicar
+        const marryButton = document.getElementById('marryButton');
+        marryButton.addEventListener('mouseover', () => {
+            marryButton.classList.add('runaway');
+            setTimeout(() => {
+                marryButton.classList.remove('runaway');
+            }, 500);
+        });
+
+        marryButton.addEventListener('click', () => {
+            alert("AEEEEEE! 💍❤️"); 
+        });
+    </script>
 </body>
 </html>
